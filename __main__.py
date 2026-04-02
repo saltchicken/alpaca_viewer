@@ -15,7 +15,7 @@ def get_tickers_from_db(engine) -> list:
     """Fetches a list of unique tickers from the existing finviz_data table."""
     try:
         with engine.connect() as conn:
-            result = conn.execute(text("SELECT DISTINCT ticker FROM technology_trends;"))
+            result = conn.execute(text("SELECT DISTINCT ticker FROM daily_stock_snapshots;"))
             tickers = [row[0] for row in result.fetchall()]
             return tickers
     except Exception as e:
